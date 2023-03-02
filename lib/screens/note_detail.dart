@@ -1,21 +1,25 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
 class NoteDetail extends StatefulWidget {
-  const NoteDetail({Key? key}) : super(key: key);
+
+  String appBarTitle = "";
+  NoteDetail(this.appBarTitle);
 
   @override
-  State<NoteDetail> createState() => _NoteDetailState();
+  State<NoteDetail> createState() => _NoteDetailState(this.appBarTitle);
 }
 
 class _NoteDetailState extends State<NoteDetail> {
-  var _priorities = ["High", "Low"];
+  final _priorities = ["High", "Low"];
   var _currentItemSelected = "Low";
+  String appBarTitle;
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
+  _NoteDetailState(this.appBarTitle);
 
 
   @override
@@ -25,7 +29,7 @@ class _NoteDetailState extends State<NoteDetail> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Note"),
+        title: Text(appBarTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
